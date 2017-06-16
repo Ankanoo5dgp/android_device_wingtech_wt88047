@@ -255,18 +255,10 @@ void init_target_properties()
         property_set("ro.telephony.default_network", "9,1");
         property_set("telephony.lteOnCdmaDevice", "0");
     }
-
-    /* Unified description and fingerprint for now */
-    property_set("ro.build.description", "wt88047-user 5.1.1 LMY47V 6.1.28 release-keys");
-    property_set("ro.build.fingerprint", "Xiaomi/wt88047/wt88047:5.1.1/LMY47V/6.1.28:user/release-keys");
-
-    ERROR("Setup %s properties done!\n", board_id);
-
-    rc = get_img_version(modem_version, IMG_VER_BUF_LEN);
-    if (!rc) {
-        property_set("gsm.version.baseband", modem_version);
-        ERROR("Detected modem version=%s\n", modem_version);
-    }
-
-    return;
+    property_set("dalvik.vm.heapstartsize", "8m");
+    property_set("dalvik.vm.heapgrowthlimit", is2GB() ? "192m" : "96m");
+    property_set("dalvik.vm.heapsize", is2GB() ? "512m" : "256m");
+    property_set("dalvik.vm.heaptargetutilization", "0.75");
+    property_set("dalvik.vm.heapminfree", is2GB() ? "512k" : "2m");
+    property_set("dalvik.vm.heapmaxfree", "8m");
 }
