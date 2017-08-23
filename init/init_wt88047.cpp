@@ -1,7 +1,8 @@
 /*
-   Copyright (c) 2015, The Linux Foundation. All rights reserved.
-   Copyright (C) 2015, The CyanogenMod Project
-   Copyright (C) 2015, Ketut P. Kumajaya
+   Copyright (c) 2016, The Linux Foundation. All rights reserved.
+   Copyright (C) 2016, The CyanogenMod Project
+   Copyright (C) 2015-2016, Ketut P. Kumajaya
+   Copyright (C) 2017-2018, The LineageOS Project
 
    Redistribution and use in source and binary forms, with or without
    modification, are permitted provided that the following conditions are
@@ -40,27 +41,19 @@
 #include <string.h>
 #include <unistd.h>
 
-#include "vendor_init.h"
+#include <android-base/properties.h>
+
 #include "property_service.h"
-#include "log.h"
+#include "vendor_init.h"
+
 #include "util.h"
 
 #include "init_msm8916.h"
 
-#define MAX(a, b) (((a) > (b)) ? (a) : (b))
+using android::base::GetProperty;
+using android::init::property_set;
 
-#define ALPHABET_LEN 256
-#define KB 1024
-
-#define IMG_PART_PATH "/dev/block/bootdevice/by-name/modem"
-#define IMG_VER_STR "QC_IMAGE_VERSION_STRING="
-#define IMG_VER_STR_LEN 24
-#define IMG_VER_BUF_LEN 255
-#define IMG_SZ 32000 * KB    /* MMAP 32000K of modem, modem partition is 64000K */
-
-static char board_id[32];
-
-static void import_kernel_nv(char *name, int in_qemu)
+void property_override(char const prop[], char const value[])
 {
     if (*name != '\0') {
         char *value = strchr(name, '=');
@@ -189,12 +182,12 @@ err_ret:
 
 void init_target_properties()
 {
-    char device[PROP_VALUE_MAX];
-    char modem_version[IMG_VER_BUF_LEN];
-    int rc;
+    std::ifstream fin;
+    std::string buf;
+    std::string product;
 
-    rc = property_get("ro.product.name", device);
-    if (!rc || (strstr(device, "wt88047") == NULL))
+    product = GetProperty("ro.product.name", "");
+    if (product != "wt88047")
         return;
 
     import_kernel_cmdline(0, import_kernel_nv);
