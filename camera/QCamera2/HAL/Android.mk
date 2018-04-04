@@ -32,12 +32,20 @@ LOCAL_C_INCLUDES := \
 
 LOCAL_C_INCLUDES += $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr/include
 LOCAL_C_INCLUDES += $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr/include/media
-LOCAL_ADDITIONAL_DEPENDENCIES := $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr
+ifeq ($(TARGET_TS_MAKEUP),true)
+LOCAL_CFLAGS += -DTARGET_TS_MAKEUP
+LOCAL_C_INCLUDES += $(LOCAL_PATH)/tsMakeuplib/include
+endif
+LOCAL_ADDITIONAL_DEPENDENCIES := INSTALLED_KERNEL_HEADERS
 
 LOCAL_SHARED_LIBRARIES := libcamera_client liblog libhardware libutils libcutils libdl
-LOCAL_SHARED_LIBRARIES += libmmcamera_interface libmmjpeg_interface
-
-LOCAL_MODULE_PATH := $(TARGET_OUT_SHARED_LIBRARIES)/hw
+LOCAL_SHARED_LIBRARIES += libmmcamera_interface libmmjpeg_interface libqdMetaData 
+LOCAL_SHARED_LIBRARIES += libhidltransport libsensor android.hidl.token@1.0-utils android.hardware.graphics.bufferqueue@1.0
+LOCAL_STATIC_LIBRARIES := libarect libbase
+ifeq ($(TARGET_TS_MAKEUP),true)
+LOCAL_SHARED_LIBRARIES += libts_face_beautify_hal libts_detected_face_hal
+endif
+LOCAL_MODULE_RELATIVE_PATH    := hw
 LOCAL_MODULE := camera.$(TARGET_BOARD_PLATFORM)
 LOCAL_32_BIT_ONLY := true
 LOCAL_MODULE_TAGS := optional
