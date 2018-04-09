@@ -1,2 +1,1 @@
-# TODO - root cause why the kernel generating this denial.
 allow kernel domain:process setsched;
