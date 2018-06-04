@@ -15,8 +15,8 @@
 
 $(call inherit-product, device/wingtech/wt88047/full_wt88047.mk)
 
-# Inherit some common bootleggers stuff.
-$(call inherit-product, vendor/dot/config/common_full_phone.mk)
+# Inherit some common DOT stuff.
+$(call inherit-product, vendor/dot/config/common.mk)
 
 # Must define platform variant before including any common things
 TARGET_BOARD_PLATFORM_VARIANT := msm8916
