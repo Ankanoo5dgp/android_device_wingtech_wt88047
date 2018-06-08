@@ -516,4 +516,7 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_ENFORCE_RRO_TARGETS := framework-res
 
+# Remove unwanted packages
+PRODUCT_PACKAGES += \
+    RemovePackages
 
