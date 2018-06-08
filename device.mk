@@ -15,7 +15,6 @@
 #
 
 $(call inherit-product, vendor/xiaomi/wt88047/wt88047-vendor.mk)
-$(call inherit-product, vendor/xiaomi/wt88047/wt88047-vendor-blobs.mk)
 
 # ANT+
 PRODUCT_PACKAGES += \
