@@ -98,7 +98,7 @@ PRODUCT_PACKAGES += \
     android.hardware.soundtrigger@2.0-impl
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/audio/audio_effects.xml:system/etc/audio_effects.xml
+    $(LOCAL_PATH)/audio/audio_effects.xml:system/vendor/etc/audio_effects.xml
 
 # Properties
 PRODUCT_PROPERTY_OVERRIDES += \
