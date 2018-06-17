@@ -63,16 +63,15 @@ TARGET_HW_DISK_ENCRYPTION := true
 TARGET_LEGACY_HW_DISK_ENCRYPTION := true
 TARGET_KEYMASTER_WAIT_FOR_QSEE := true
 
-# Dexpreopt
+# Deodex
 ifeq ($(HOST_OS),linux)
-    ifeq ($(TARGET_BUILD_VARIANT),user)
+    ifneq ($(TARGET_BUILD_VARIANT),eng)
         ifeq ($(WITH_DEXPREOPT),)
-            WITH_DEXPREOPT := false
+            WITH_DEXPREOPT := true
+            WITH_DEXPREOPT_BOOT_IMG_AND_SYSTEM_SERVER_ONLY := true
         endif
     endif
 endif
-WITH_DEXPREOPT_BOOT_IMG_AND_SYSTEM_SERVER_ONLY := true
-
 
 # Display
 MAX_EGL_CACHE_KEY_SIZE := 12*1024
