@@ -1,2 +1,11 @@
 # For compass calibration module
+allow system_server compass_prop:file { getattr open read };
 allow system_server compass_prop:property_service set;
+
+allow system_server wifi_data_file:sock_file unlink;
+
+# To improve app launch times - we would like to force all tasks to
+# run on big cores for app launch (sched_boost) - instead of just
+# boosting them to make it "more likely" to run on big cores.
+allow system_server domain:process setsched;
+
