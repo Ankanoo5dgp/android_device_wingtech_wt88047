@@ -1,1 +1,2 @@
-set_prop(system_server, compass_prop)
+set_prop(system_server, compass_prop);
+allow system_server domain:process setsched;
