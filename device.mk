@@ -15,7 +15,6 @@
 #
 
 $(call inherit-product, vendor/wingtech/wt88047/wt88047-vendor.mk)
-$(call inherit-product, vendor/wingtech/wt88047/volte.mk)
 
 # ANT+
 PRODUCT_PACKAGES += \
@@ -523,3 +522,28 @@ PRODUCT_ENFORCE_RRO_TARGETS := framework-res
 # Vendor security patch level
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.lineage.build.vendor_security_patch=2017-01-01
+
+# Properties
+PRODUCT_PROPERTY_OVERRIDES += \
+    net.lte.volte_call_capable=true \
+    persist.ims.enableADBLogs=1 \
+    persist.ims.enableDebugLogs=1 \
+    persist.radio.calls.on.ims=true \
+    persist.radio.csvt.enabled=false \
+    persist.radio.jbims=1 \
+    persist.radio.ROTATION_ENABLE=1 \
+    persist.radio.VT_ENABLE=1 \
+    persist.radio.VT_HYBRID_ENABLE=1 \
+    persist.radio.VT_USE_MDM_TIME=0 \
+    persist.dbg.volte_avail_ovr=1 \
+    persist.volte_enalbed_by_hw=1 \
+    persist.dbg.volte_avail_ovr=1 \
+    persist.dbg.vt_avail_ovr=1 \
+    persist.dbg.wfc_avail_ovr=1
+
+# libshims
+PRODUCT_PACKAGES += \
+   libshim_parcel \
+   libshim_boringssl \
+   libshims_camera \
+   libshims_ims
