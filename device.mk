@@ -15,7 +15,7 @@
 #
 
 $(call inherit-product, vendor/wingtech/wt88047/wt88047-vendor.mk)
-$(call inherit-product, vendor/wingtech/WT88047/volte.mk)
+$(call inherit-product, vendor/wingtech/wt88047/volte.mk)
 
 # ANT+
 PRODUCT_PACKAGES += \
