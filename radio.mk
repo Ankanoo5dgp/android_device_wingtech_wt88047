@@ -27,7 +27,3 @@ RADIO_FILES := $(shell cd $(radio_dir) ; ls)
 $(foreach f, $(RADIO_FILES), \
     $(call add-radio-file,radio/$(f)))
 endif
-
-
-# Proprietary
-$(call add-radio-file,../../../vendor/wingtech/volte/wt88047/radio/NON-HLOS.bin)
