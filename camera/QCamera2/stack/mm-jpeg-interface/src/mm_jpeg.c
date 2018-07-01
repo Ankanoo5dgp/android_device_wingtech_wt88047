@@ -1879,6 +1879,7 @@ static int32_t mm_jpeg_check_resolution_change(mm_jpeg_obj *my_obj,
   int32_t prev_width,
   int32_t prev_height)
 {
+  int32_t rc = 0;
   if (my_obj->work_buf_cnt > work_bufs_need) {
     CDBG_ERROR("%s: %d] Unexpected work buffer count", __func__, __LINE__);
     return -1;
@@ -2628,9 +2629,9 @@ int32_t mm_jpeg_close(mm_jpeg_obj *my_obj, uint32_t client_hdl)
   return rc;
 }
 
-OMX_ERRORTYPE mm_jpeg_ebd(OMX_HANDLETYPE hComponent __unused,
+OMX_ERRORTYPE mm_jpeg_ebd(OMX_HANDLETYPE hComponent,
   OMX_PTR pAppData,
-  OMX_BUFFERHEADERTYPE *pBuffer __unused)
+  OMX_BUFFERHEADERTYPE *pBuffer)
 {
   mm_jpeg_job_session_t *p_session = (mm_jpeg_job_session_t *) pAppData;
 
@@ -2641,7 +2642,7 @@ OMX_ERRORTYPE mm_jpeg_ebd(OMX_HANDLETYPE hComponent __unused,
   return 0;
 }
 
-OMX_ERRORTYPE mm_jpeg_fbd(OMX_HANDLETYPE hComponent __unused,
+OMX_ERRORTYPE mm_jpeg_fbd(OMX_HANDLETYPE hComponent,
   OMX_PTR pAppData,
   OMX_BUFFERHEADERTYPE *pBuffer)
 {
@@ -2694,12 +2695,12 @@ OMX_ERRORTYPE mm_jpeg_fbd(OMX_HANDLETYPE hComponent __unused,
 
 
 
-OMX_ERRORTYPE mm_jpeg_event_handler(OMX_HANDLETYPE hComponent __unused,
+OMX_ERRORTYPE mm_jpeg_event_handler(OMX_HANDLETYPE hComponent,
   OMX_PTR pAppData,
   OMX_EVENTTYPE eEvent,
   OMX_U32 nData1,
   OMX_U32 nData2,
-  OMX_PTR pEventData __unused)
+  OMX_PTR pEventData)
 {
   mm_jpeg_job_session_t *p_session = (mm_jpeg_job_session_t *) pAppData;
 

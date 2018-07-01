@@ -4,16 +4,25 @@ LOCAL_PATH := $(call my-dir)
 
 include $(CLEAR_VARS)
 
-LOCAL_SRC_FILES := \
-    src/mm_camera_interface.c \
-    src/mm_camera.c \
-    src/mm_camera_channel.c \
-    src/mm_camera_stream.c \
-    src/mm_camera_thread.c \
-    src/mm_camera_sock.c \
-    src/cam_intf.c
+LOCAL_CLANG_CFLAGS += \
+        -Wno-error=memsize-comparison \
+        -Wno-error=missing-field-initializers \
+        -Wno-error=pointer-bool-conversion
 
-ifeq ($(call is-board-platform-in-list, msm8974 msm8916 msm8226 msm8610 msm8909),true)
+MM_CAM_FILES := \
+        src/mm_camera_interface.c \
+        src/mm_camera.c \
+        src/mm_camera_channel.c \
+        src/mm_camera_stream.c \
+        src/mm_camera_thread.c \
+        src/mm_camera_sock.c \
+        src/cam_intf.c
+
+ifeq ($(strip $(TARGET_USES_ION)),true)
+    LOCAL_CFLAGS += -DUSE_ION
+endif
+
+ifeq ($(call is-board-platform-in-list,msm8974 msm8916 msm8226 msm8610 msm8909),true)
     LOCAL_CFLAGS += -DVENUS_PRESENT
 endif
 
