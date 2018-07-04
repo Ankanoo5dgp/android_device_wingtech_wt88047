@@ -119,7 +119,7 @@ BOARD_KERNEL_IMAGE_NAME := Image
 BOARD_KERNEL_SEPARATED_DT := true
 TARGET_KERNEL_SOURCE := kernel/wingtech/msm8916
 TARGET_KERNEL_CONFIG := excalibur_defconfig
-BOARD_KERNEL_CMDLINE += sched_enable_hmp=1 phy-msm-usb.floated_charger_enable=1 console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=qcom msm_rtb.filter=0x237 ehci-hcd.park=3 androidboot.bootdevice=7824900.sdhci lpm_levels.sleep_disabled=1 androidboot.selinux=permissive
+BOARD_KERNEL_CMDLINE += sched_enable_hmp=1 phy-msm-usb.floated_charger_enable=1 console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=qcom msm_rtb.filter=0x237 ehci-hcd.park=3 androidboot.bootdevice=7824900.sdhci lpm_levels.sleep_disabled=1
 BOARD_KERNEL_BASE := 0x80000000
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_KERNEL_TAGS_OFFSET := 0x01E00000
@@ -150,13 +150,14 @@ BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
 
 # Qualcomm support
 BOARD_USES_QCOM_HARDWARE := true
-ifeq ($(TARGET_BOARD_PLATFORM_VARIANT),msm8939)
-TARGET_POWERHAL_SET_INTERACTIVE_EXT := $(PLATFORM_PATH)/power/power_ext.c
-endif
 TARGET_POWERHAL_VARIANT := qcom
 TARGET_RIL_VARIANT := caf
 MALLOC_SVELTE := true
 PRODUCT_VENDOR_MOVE_ENABLED := true
+TARGET_COPY_OUT_VENDOR := system/vendor
+
+# Properties
+TARGET_SYSTEM_PROP := $(DEVICE_PATH)/system.prop
 
 # Recovery
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/etc/fstab.full
@@ -200,4 +201,3 @@ WPA_SUPPLICANT_VERSION := VER_0_8_X
 
 # inherit from the proprietary version
 include vendor/wingtech/wt88047/BoardConfigVendor.mk
-include device/wingtech/wt88047/radio.mk
