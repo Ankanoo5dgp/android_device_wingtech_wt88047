@@ -123,7 +123,7 @@ PRODUCT_PACKAGES += \
 # Keymaster HAL
 PRODUCT_PACKAGES += \
     android.hardware.keymaster@3.0-impl \
-    android.hardware.keymaster@3.0-service 
+    android.hardware.keymaster@3.0-service
 
 # Keystore
 ifneq ($(TARGET_PROVIDES_KEYMASTER),true)
@@ -226,7 +226,7 @@ PRODUCT_PACKAGES += \
     android.hardware.usb@1.0-service
 
 # Overlay
-DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
+DEVICE_PACKAGE_OVERLAYS := $(LOCAL_PATH)/overlay 
 
 # Boot animation
 TARGET_SCREEN_HEIGHT := 1280
@@ -238,10 +238,6 @@ PRODUCT_AAPT_PREF_CONFIG := xhdpi
 # For android_filesystem_config.h
 PRODUCT_PACKAGES += \
     fs_config_files
-
-# HIDL
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/manifest.xml:$(TARGET_COPY_OUT_VENDOR)/manifest.xml
 
 # Init scripts
 PRODUCT_PACKAGES += \
@@ -288,6 +284,7 @@ TARGET_BOOTANIMATION_HALF_RES := true
 # Camera
 PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.4-impl \
+    android.hardware.camera.provider@2.4-service \
     camera.device@3.2-impl \
     camera.msm8916 \
     libmm-qcamera \
