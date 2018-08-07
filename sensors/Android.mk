@@ -23,6 +23,7 @@ LOCAL_C_INCLUDES := \
     external/icu/icu4c/source/common
 
 LOCAL_C_INCLUDES += $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr/include
+#LOCAL_ADDITIONAL_DEPENDENCIES := $(LOCAL_PATH)/kernel-headers/include
 
 LOCAL_SHARED_LIBRARIES := liblog libcutils libdl libxml2 libutils
 
