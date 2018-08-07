@@ -35,3 +35,7 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
     PRIVATE_BUILD_DESC="marlin-user 8.1.0 OPM4.171019.021.P1 4820305 release-keys"
 
 BUILD_FINGERPRINT := google/marlin/marlin:8.1.0/OPM4.171019.021.P1/4820305:user/release-keys
+
+#Prebult kernel
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/zImage-dtb:kernel 
