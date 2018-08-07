@@ -425,4 +425,8 @@
         <item>LPPE_CP_TECHNOLOGY=0</item>
         <item>LPPE_UP_TECHNOLOGY=0</item>
     </string-array>
+
+    <!-- Default color for notification LED is blue. -->
+    <color name="config_defaultNotificationColor">#ff00ffff</color>
+
 </resources>
