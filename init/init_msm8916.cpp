@@ -41,15 +41,14 @@
 
 #include "log.h"
 #include "property_service.h"
-#include "util.h"
 #include "vendor_init.h"
 
 #include "init_msm8916.h"
 
 using android::base::GetProperty;
+using android::base::SetProperty;
 using android::base::ReadFileToString;
 using android::base::Trim;
-using android::init::property_set;
 
 __attribute__ ((weak))
 void init_target_properties()
@@ -83,9 +82,9 @@ static void init_alarm_boot_properties()
          */
         if ((Trim(boot_reason) == "3" || tmp == "true")
                 && Trim(power_off_alarm) == "1")
-            property_set("ro.alarm_boot", "true");
+            SetProperty("ro.alarm_boot", "true");
         else
-            property_set("ro.alarm_boot", "false");
+            SetProperty("ro.alarm_boot", "false");
     }
 }
 
