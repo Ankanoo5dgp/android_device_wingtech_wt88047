@@ -163,9 +163,9 @@ TARGET_COPY_OUT_VENDOR := system/vendor
 TARGET_SYSTEM_PROP := $(DEVICE_PATH)/system.prop
 
 # Recovery
-TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/etc/fstab.full
+#TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/etc/fstab.full
 BOARD_NO_SECURE_DISCARD := true
-TARGET_RECOVERY_UPDATER_LIBS := librecovery_updater_cm
+#TARGET_RECOVERY_UPDATER_LIBS := librecovery_updater_cm
 
 # Releasetools
 TARGET_RELEASETOOLS_EXTENSIONS := $(PLATFORM_PATH)
