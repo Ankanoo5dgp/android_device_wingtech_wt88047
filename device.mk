@@ -324,12 +324,12 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/wifi/WCNSS_wlan_dictionary.dat:$(TARGET_COPY_OUT_VENDOR)/firmware/wlan/prima/WCNSS_wlan_dictionary.dat
 
 # Sensor HAL
-PRODUCT_PACKAGES += \
-    android.hardware.sensors@1.0-impl \
-    calmodule.cfg \
-    libcalmodule_common \
-    sensors.msm8916 \
-    sensors.wt88047
+#PRODUCT_PACKAGES += \
+#    android.hardware.sensors@1.0-impl \
+#    calmodule.cfg \
+#    libcalmodule_common \
+#    sensors.msm8916 \
+#    sensors.wt88047
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/sensors/_hals.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sensors/_hals.conf
