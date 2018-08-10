@@ -15,11 +15,8 @@
 
 $(call inherit-product, device/wingtech/wt88047/full_wt88047.mk)
 
-# Inherit some common AOKP stuff.
-$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
-
-# Inherit common treble configuration
-$(call inherit-product, $(SRC_TARGET_DIR)/product/treble_common.mk)
+# Inherit some common AOSP stuff.
+$(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
 
 # Must define platform variant before including any common things
 TARGET_BOARD_PLATFORM_VARIANT := msm8916
@@ -35,10 +32,10 @@ PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
 
 # Build fingerprint
 PRODUCT_BUILD_PROP_OVERRIDES += \
-    PRIVATE_BUILD_DESC="wt88047-user 5.1.1 LMY47V V9.2.5.0.LHJMIEK release-keys"
+    PRIVATE_BUILD_DESC="marlin-user 8.1.0 OPM4.171019.021.P1 4820305 release-keys"
 
-BUILD_FINGERPRINT := Xiaomi/wt88047/wt88047:5.1.1/LMY47V/V9.2.5.0.LHJMIEK:user/release-keys
+BUILD_FINGERPRINT := google/marlin/marlin:8.1.0/OPM4.171019.021.P1/4820305:user/release-keys
 
 #Prebult kernel
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/zImage-dtb:kernel
+    $(LOCAL_PATH)/zImage-dtb:kernel 
