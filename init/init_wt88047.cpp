@@ -42,12 +42,14 @@
 #include "property_service.h"
 #include "vendor_init.h"
 
-#include "util.h"
 
 #include "init_msm8916.h"
 
 using android::base::GetProperty;
-using android::init::property_set;
+
+#include "init_msm8916.h"
+
+using android::base::SetProperty;
 
 void property_override(char const prop[], char const value[])
 {
@@ -97,7 +99,7 @@ void init_target_properties()
         property_override("ro.product.device", "HM2014819");
         property_override("ro.product.model", "2014819");
         property_override("ro.product.name", "2014819");
-        property_set("ro.telephony.default_network", "9,1");
+        SetProperty("ro.telephony.default_network", "9,1");
     }
     /* S88047C1 */
     else if (buf.find("S88047C1") != std::string::npos) {
@@ -105,9 +107,9 @@ void init_target_properties()
         property_override("ro.product.device", "HM2014818");
         property_override("ro.product.model", "2014818");
         property_override("ro.product.name", "2014818");
-        property_set("ro.telephony.default_network", "9,1");
-        property_set("persist.dbg.volte_avail_ovr", "1");
-        property_set("persist.dbg.vt_avail_ovr", "1");
+        SetProperty("ro.telephony.default_network", "9,1");
+        SetProperty("persist.dbg.volte_avail_ovr", "1");
+        SetProperty("persist.dbg.vt_avail_ovr", "1");
     }
     /* S88047B2 */
     else if (buf.find("S88047B2") != std::string::npos) {
@@ -115,9 +117,9 @@ void init_target_properties()
         property_override("ro.product.device", "HM2014821");
         property_override("ro.product.model", "2014821");
         property_override("ro.product.name", "2014821");
-        property_set("ro.telephony.default_network", "22,1");
-        property_set("telephony.lteOnCdmaDevice", "1");
-        property_set("persist.radio.sglte.eons_domain", "ps");
+        SetProperty("ro.telephony.default_network", "22,1");
+        SetProperty("telephony.lteOnCdmaDevice", "1");
+        SetProperty("persist.radio.sglte.eons_domain", "ps");
     }
     /* S88047B1 */
     else if (buf.find("S88047B1") != std::string::npos) {
@@ -125,9 +127,9 @@ void init_target_properties()
         property_override("ro.product.device", "HM2014812");
         property_override("ro.product.model", "2014812");
         property_override("ro.product.name", "2014812");
-        property_set("ro.telephony.default_network", "22,1");
-        property_set("telephony.lteOnCdmaDevice", "1");
-        property_set("persist.radio.sglte.eons_domain", "ps");
+        SetProperty("ro.telephony.default_network", "22,1");
+        SetProperty("telephony.lteOnCdmaDevice", "1");
+        SetProperty("persist.radio.sglte.eons_domain", "ps");
     }
     /* S86047A1 and S86047A1_CD */
     else if (buf.find("S86047A1") != std::string::npos) {
@@ -135,7 +137,7 @@ void init_target_properties()
         property_override("ro.product.device", "HM2014813");
         property_override("ro.product.model", "2014813");
         property_override("ro.product.name", "2014813");
-        property_set("ro.telephony.default_network", "9,1");
+        SetProperty("ro.telephony.default_network", "9,1");
     }
     /* S86047A2 and S86047A2_CD */
     else if (buf.find("S86047A2") != std::string::npos) {
@@ -143,7 +145,7 @@ void init_target_properties()
         property_override("ro.product.device", "HM2014112");
         property_override("ro.product.model", "2014112");
         property_override("ro.product.name", "2014112");
-        property_set("ro.telephony.default_network", "9,1");
+        SetProperty("ro.telephony.default_network", "9,1");
     }
     /* S88047A2 and S88047A1 */
     else {
@@ -151,13 +153,13 @@ void init_target_properties()
         property_override("ro.product.device", "HM2014811");
         property_override("ro.product.model", "2014811");
         property_override("ro.product.name", "2014811");
-        property_set("ro.telephony.default_network", "9,1");
+        SetProperty("ro.telephony.default_network", "9,1");
     }
 
-    property_set("dalvik.vm.heapstartsize", "8m");
-    property_set("dalvik.vm.heapgrowthlimit", is2GB() ? "192m" : "96m");
-    property_set("dalvik.vm.heapsize", is2GB() ? "512m" : "256m");
-    property_set("dalvik.vm.heaptargetutilization", "0.75");
-    property_set("dalvik.vm.heapminfree", is2GB() ? "512k" : "2m");
-    property_set("dalvik.vm.heapmaxfree", "8m");
+    SetProperty("dalvik.vm.heapstartsize", "8m");
+    SetProperty("dalvik.vm.heapgrowthlimit", is2GB() ? "192m" : "96m");
+    SetProperty("dalvik.vm.heapsize", is2GB() ? "512m" : "256m");
+    SetProperty("dalvik.vm.heaptargetutilization", "0.75");
+    SetProperty("dalvik.vm.heapminfree", "512k");
+    SetProperty("dalvik.vm.heapmaxfree", "8m");
 }
