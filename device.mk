@@ -349,16 +349,9 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.usb.host.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.usb.host.xml
 
+include device/wingtech/wt88047/default-prop.mk
+
 # HIDL
 PRODUCT_PACKAGES += \
     android.hidl.base@1.0 \
     android.hidl.manager@1.0
-
-PRODUCT_PROPERTY_OVERRIDES += \
-  debug.composition.type=dyn \
-  debug.hwc.dynThreshold=4.5 \
-  debug.sf.hwc.canUseABC=1 \
-  debug.sf.disable_backpressure=1 \
-  debug.sf.latch_unsignaled=1 \
-
-include device/wingtech/wt88047/default-prop.mk
