@@ -11,4 +11,4 @@
 #
   
 PRODUCT_MAKEFILES := \
-  $(LOCAL_DIR)/slim_wt88047.mk
+  $(LOCAL_DIR)/omni_wt88047.mk
