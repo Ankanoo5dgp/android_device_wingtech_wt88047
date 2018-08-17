@@ -15,7 +15,6 @@
 # limitations under the License.
 
 TARGET_BOARD_PLATFORM := msm8916
-FORCE_32_BIT := true
 DEVICE_PATH := device/wingtech/wt88047
 
 # ANT+
@@ -163,10 +162,10 @@ USE_OPENGL_RENDERER := true
 #include device/qcom/sepolicy/sepolicy.mk
 #include device/qcom/sepolicy/legacy-sepolicy.mk
 #BOARD_SEPOLICY_DIRS += \
-    $(DEVICE_PATH)/sepolicy
+#    $(DEVICE_PATH)/sepolicy
 
 # Gapps
-GAPPS_VARIANT := pico
+#GAPPS_VARIANT := pico
 
 # Wlan
 BOARD_HAS_QCOM_WLAN := true
@@ -182,4 +181,5 @@ WIFI_DRIVER_FW_PATH_STA := "sta"
 WPA_SUPPLICANT_VERSION := VER_0_8_X
 
 # inherit from the proprietary version
-include vendor/wingtech/wt88047/BoardConfigVendor.mk
+include vendor/xiaomi/wt88047/BoardConfigVendor.mk
+include device/wingtech/wt88047/radio.mk

@@ -15,7 +15,9 @@
 # limitations under the License.
 #
 
-$(call inherit-product, vendor/wingtech/wt88047/wt88047-vendor.mk)
+$(call inherit-product, vendor/xiaomi/wt88047/wt88047-vendor.mk)
+$(call inherit-product, vendor/volte/volte.mk)
+$(call inherit-product, vendor/volte/lettuce/lettuce-vendor.mk)
 
 # Boot animation
 TARGET_SCREEN_HEIGHT := 1280

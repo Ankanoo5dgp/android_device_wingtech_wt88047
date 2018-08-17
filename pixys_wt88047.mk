@@ -14,8 +14,9 @@
 # limitations under the License.
 
 $(call inherit-product, device/wingtech/wt88047/full_wt88047.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 
-# Inherit some common PixelExperience stuff.
+# Inherit some common Pixys OS stuff.
 $(call inherit-product, vendor/pixys/config/common_full_phone.mk)
 
 # Must define platform variant before including any common things
