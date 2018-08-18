@@ -17,7 +17,7 @@ LOCAL_SRC_FILES := \
     QCameraThermalAdapter.cpp \
     wrapper/QualcommCamera.cpp
 
-LOCAL_CFLAGS += -Wall -Wextra -Werror
+LOCAL_CFLAGS += -Wall -Wextra -Wno-error
 
 #use media extension
 #ifeq ($(TARGET_USES_MEDIA_EXTENSIONS), true)
